@@ -1,0 +1,54 @@
+{% extends "_base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Log In{% endblock title %}
+{% block content %}
+<div class="login-form-container">
+    <!-- <div id="close-login-btn" class="fas fa-times"></div> -->
+    <button id="close-login-btn" class="fas fa-times"></button>
+    <form method="post">
+        <h3>Log In</h3>
+        {% csrf_token %}
+        {{ form|crispy }}
+    <button class="btn btn-success" type="submit">Log In</button>
+    </form>
+</div>
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="login-form-container">
+    <form method="post" action="">
+        {% csrf_token %}
+
+        <h3>Sign In</h3>
+        <span>{{ form.username.label }}</span>
+        {{ form.username|as_crispy_field }}
+        <span>{{ form.password.label }}</span>
+        {{ form.password|as_crispy_field }}
+        <div class="checkbox">
+            {{ form.remember_me|as_crispy_field }}
+            <label for="{{ form.remember_me.id_for_label }}">Remember me</label>
+        </div>
+        <input type="submit" value="Sign In" class="btn">
+        <p>Forgot password? <a href="#">Click here</a></p>
+        <p>Don't have an account? <a href="#">Create new</a></p>
+    </form>
+</div> -->

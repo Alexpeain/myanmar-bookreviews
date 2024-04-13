@@ -1,0 +1,56 @@
+{% load static %}
+
+{% block content %}
+    <header class="header">
+        <div class="header-1">
+            <img src="{% static 'images/logo-modified.png'%}" width="50px" height="50px" srcset="">
+            <a href="#" class="logo">Book&Nook </a>
+            <form action="{% url 'search_results' %}" class="search-form" method="get">
+                <input type="search" name="" placeholder="search here..." id="search-box" name="q" aria-\ label="Search">
+                <label for="search-box" class="fas fa-search"></label>
+            </form>
+            <div class="icons">
+                <div id="search-btn" class="fas fa-search"></div>
+                <a href="#" class="fas fa-heart"></a>
+                <div id="login-btn" >
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'account_logout' %}"><i class="fas fa-user"></i></a>
+                    {% else %}
+                    <a href="{% url 'account_login' %}"><i class="fas fa-user"></i></a>
+                    {% endif%}
+
+                </div>
+            </div>
+        </div>
+        <div class="header-2">
+            <nav class="navbar">
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'book_list' %}">Book</a>
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle dropdown-toggle-no-caret" data-bs-toggle="dropdown" aria-expanded="false">Genres</a>
+                    <ul class="dropdown-menu">
+                        {% for genre in genres %}
+                            <li><a href="/genres/{{ genre.id }}/">{{ genre.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <a href="#">Reviews</a>
+                <a href="#">Blog</a>
+              
+            </nav>
+        </div>
+    </header>
+    
+    <!-- bottom navbar -->
+    <nav class="bottom-navbar">
+        <a href="#home" class="fas fa-home"></a>
+        <a href="#books" class="fas fa-list"></a>
+        <a href="#genres" class="fas fa-tags"></a>
+        <a href="#reviews" class="fas fa-comments"></a>
+        <a href="#blog" class="fas fa-blog"></a>
+        
+    </nav>
+
+
+{% endblock content %}
+    
