@@ -38,4 +38,8 @@
 
 ### Frontend Page View
 
-![Alt Text](/static/images/HomepageView.jpeg)
+![HomepageView](static/images/HomepageView.jpeg)
+
+## License
+
+[MIT License](LICENSE)

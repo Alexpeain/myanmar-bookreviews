@@ -2,7 +2,7 @@ import csv
 import os
 from PIL import Image
 
-csv_file = "./data/booknauthorimage.csv"
+csv_file = "./data/booknauthorimage.csv"  #temporary remove
 book_data = []
 
 with open(csv_file, 'r', encoding='utf-8') as file:
