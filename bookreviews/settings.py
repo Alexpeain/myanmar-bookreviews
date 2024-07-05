@@ -128,9 +128,9 @@ WSGI_APPLICATION = "bookreviews.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'bookdb',
-        'USER': 'apple',
-        'PASSWORD': 'wCh29&HE&T83',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_USER_PASSWORD'),
         'HOST': '127.0.0.1',
         # 'PORT': '5342',
     }
