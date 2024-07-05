@@ -1,31 +1,41 @@
 # Personal BOOK&NOOK Project
-<br> Myanmar BookReviews  MyanBookReviews
+
+<br> Myanmar BookReviews MyanBookReviews
 
 ### Purpose of the project
-* Learn By Building Focus on Backend Development
-* For passion as an avid reader who does't have time and want to save time
+
+- Learn By Building Focus on Backend Development
+- For passion as an avid reader who does't have time and want to save time
 
 #### Backend stacks and Configuration
-* implement CRUD, API, Authetication & Authorization ,Web Security,
-* Postgresql (DB scheme), logs, Performance (CICD)
+
+- implement CRUD, API, Authetication & Authorization ,Web Security,
+- Postgresql (DB scheme), logs, Performance (CICD)
 
 #### Frontend Techology
-* Javscript ,HTML,CSS
 
-#### Business Logic 
-* Book Management (Add, Delete, edit)
-    - Data Model handling Book Metadata
-    - orgainze books into categories
+- Javscript ,HTML,CSS
 
-* User Manangement 
-    - User registration /Authentication & Authorization
-    - user -create account and manage (data ,editing /adding books)
+#### Business Logic
 
-* Reviews And Rating 
-    - enable user to write /rate books
-    
-* Searching and filetering 
+- Book Management (Add, Delete, edit)
 
-* Social Feature 
-* Recommendation (base on preference reaching histories)
-* Notification 
+  - Data Model handling Book Metadata
+  - orgainze books into categories
+
+- User Manangement
+
+  - User registration /Authentication & Authorization
+  - user -create account and manage (data ,editing /adding books)
+
+- Reviews And Rating
+  - enable user to write /rate books
+- Searching and filetering
+
+- Social Feature
+- Recommendation (base on preference reaching histories)
+- Notification
+
+### Frontend Page View
+
+![Alt Text](/static/images/HomepageView.jpeg)

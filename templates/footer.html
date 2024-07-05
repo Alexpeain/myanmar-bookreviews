@@ -1,39 +1,47 @@
   
 {% load static %}
 {% block content %}
+
 <section class="footer">
-    <div class="footer-content">
-        <img src="{% static 'C:\Users\user\Documents\Bookstore\static\images\logo-modified.png' %}" alt="" srcset="" width="90px" height="90px">        
-        <p><span>Book&Nook</span> Reviews myanmar books</p>
+    <div class="box-container">
+        <div class="footer-content">
+            <img src="{% static 'C:\Users\user\Documents\Bookstore\static\images\logo-modified.png' %}" alt="" srcset="" width="90px" height="90px">        
+            <p><span>Book&Nook</span></p>
+            <p>Reviews myanmar books</p>
+        </div>
+        <div class="footer-content">
+            <h4>Book & Nook </h4>
+            <li><a href="#">Books</a></li>
+            <li><a href="#">Genres</a></li>
+            <li><a href="#">Reviews</a></li>
+            <li><a href="#">Blog</a></li>
+        </div>
+        <div class="footer-content">
+            <h4>Contacts </h4>
+            <li><a href="#">+95-9250284132</a></li>
+            <li><a href="#" class="email">asapvendor@gmail.com</a></li>
+            <li><a href="#" >LinkedIn</a></li>
+            <li><a href="#">Github</a></li>
+        </div>
+        <div class="footer-content">
+            <h4>Extra links</h4>
+            <li><a href="{% url 'account_login' %}">Login</a></li>
+            <li><a href="{% url 'account_signup' %}">Signup</a></li>
+            <li><a href="#">Blog</a></li>
+        
+        </div>
+        
+        <div class="footer-content"> <!-- icons -->
+            <h4>Connect with us!</h4>
+            <div class="d-flex">
+                <a href="#"><i class="bx bxl-facebook-circle" color="black"></i></a>
+                <a href="#"><i class='bx bxl-twitter'></i></a>
+                <a href="#"><i class="bx bxl-instagram-alt"></i></a>
+                <a href="#"><i class="bx bxl-github"></i></a>
+            </div>
+        </div>
     </div>
-    <div class="footer-content">
-        <h4>Book & Nook </h4>
-        <li><a href="#">Books</a></li>
-        <li><a href="#">Genres</a></li>
-        <li><a href="#">Reviews</a></li>
-        <li><a href="#">Blog</a></li>
-    </div>
-    <div class="footer-content">
-        <h4>Contacts </h4>
-        <li><a href="#">+95-9250284132</a></li>
-        <li><a href="#" class="email">asapvendor@gmail.com</a></li>
-        <li><a href="#" >LinkedIn</a></li>
-        <li><a href="#">Github</a></li>
-    </div>
-    <div class="footer-content">
-        <h4>Extra links</h4>
-        <li><a href="{% url 'account_login' %}">Login</a></li>
-        <li><a href="{% url 'account_signup' %}">Signup</a></li>
-        <li><a href="#">Blog</a></li>
-    
-    </div>
-    <div class="icons">
-        <h4 class="connect-heading">Connect with us!</h4>
-        <a href="#"><i class="bx bxl-facebook-circle" color="black"></i></a>
-        <a href="#"><i class='bx bxl-twitter'></i></a>
-        <a href="#"><i class="bx bxl-instagram-alt"></i></a>
-    </div>
-    
+    <div class="credit">Created by <span>Alex Peain</span> | all rights reserved!</div>
 </section>
 
 {% endblock content %}

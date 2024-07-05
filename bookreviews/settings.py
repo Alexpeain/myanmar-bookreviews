@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 from environs import Env
 from pathlib import Path
+import os
 # import socket
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -99,7 +100,7 @@ ROOT_URLCONF = "bookreviews.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "templates"],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -118,13 +119,23 @@ WSGI_APPLICATION = "bookreviews.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'bookdb',
+        'USER': 'apple',
+        'PASSWORD': 'wCh29&HE&T83',
+        'HOST': '127.0.0.1',
+        # 'PORT': '5342',
     }
+    
 }
-
 # DATABASES = {
 #     "default": env.dj_db_url('DATABASE_URL',default = 'sqlite://db.sqlite3')
 # }

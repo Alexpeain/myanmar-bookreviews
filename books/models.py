@@ -1,11 +1,14 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.urls import reverse
+import os
+from django.core.files import File
+from urllib.request import urlopen
 
 import uuid
 class Genre(models.Model):
     name = models.CharField(max_length=100)
-    description = models.TextField()
+    description = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -15,10 +18,10 @@ class Book(models.Model):
     #id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=200)
-    description = models.TextField()
-    cover = models.ImageField(upload_to="covers/",blank=True)
-    genres = models.ManyToManyField(Genre)
-
+    # description = models.TextField(null=True,blank=True)
+    description = models.TextField(default='')
+    cover = models.ImageField(upload_to=os.path.join('covers', ''),blank=True,null=True) #upload_to="covers/"
+    genres = models.ManyToManyField(Genre,null=True)
     def __str__(self):
         return self.title
     
@@ -28,6 +31,7 @@ class Book(models.Model):
         indexes = [ # new
         models.Index(fields=["Bid"], name="id_index"),]
 
+        
 class Review(models.Model):
     book = models.ForeignKey(Book,
             on_delete=models.CASCADE,

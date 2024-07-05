@@ -2,13 +2,100 @@
 {% load static %}
 {% block title %}Book&Nook{% endblock title %}
 {% block content %}
+<style>
+  
+  .btn {
+  display: inline-block;
+  padding: .9rem 3rem;
+  border-radius: .5rem;
+  color: white;
+  background: #5f6663;
+  font-size: 1.7rem;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  text-decoration: none; /* remove underline on the link */
+}
 
-<div class="main">
+.btn:hover {
+  background: #666; /* assuming --dark-green is defined elsewhere */
+}
+
+.btn:active {
+  position: relative;
+  top: 1px;
+}
+/* rating section */
+.rating-section {
+    background-color: #f1f1f1;
+    padding: 20px;
+    color: #333;
+    animation: scrollAnimation 6s infinite;
+    scroll-behavior: smooth;
+    display: flex;
+    overflow-x: auto;
+  }
+
+  .rating {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    animation: danceAnimation 2s infinite;
+  }
+
+  .rating input {
+    display: none;
+  }
+
+  .rating label {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    background-image: url('../static/images/star.png');
+    background-size: contain;
+    transition: transform 0.2s;
+  }
+
+  .rating input:checked + label {
+    transform: rotateY(180deg);
+  }
+
+  @keyframes scrollAnimation {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes danceAnimation {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .rating-section {
+      background-color: #fff;
+      padding: 10px;
+      color: #000;
+    }
+  }
+</style>
+<section class="home" id="home">
+  <div class="main">
 
     <div class="main_tag">
         <h1>WELCOME TO <br><span>BOOK & NOOK Reviews</span></h1>
         <p>This is my personal project for Myanmar Books Review</p>
-        <a href="{% url 'about' %}" class="main_btn">Learn More</a>
+        <a href="{% url 'about' %}" class="btn">Learn More</a>
     </div>
 
     <div class="main_img">
@@ -16,35 +103,144 @@
     </div>
 
 </div>
-<br>
-<hr>
+</section>
 
-<div class="card-group">
-    <div class="card">
-      <img src="static/images/reviews/Monk-600x600.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">ဖာရာရီလမ်းခွဲ</h5>
-        <p class="card-text">အရမ်းကောင်းတဲ့ စာအုပ်တစ်အုပ်ပါ။ဤစာအုပ်ဖတ်ပြီးကျွန်တော်အများကြီးပြောင်းလဲလာတာတော့ တကယ်ပါ။လူငယ်တေ ဖတ်သင့်ပါ‌တယ်။</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-    <div class="card">
-      <img src="static/images/reviews/Apyin-Ka-Lu-600x600 (1).webp" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">အပြင်ကလူ</h5>
-        <p class="card-text">အကွေ့ အပြောင်း တွေဇတ်ရှိတ် တွေကတော့ ထိမ်းမရအောင် ကိုကောင်းတာ။ အဲတာကြောင့်လည်း ဆရာမ ကြည်အေး လို့ခေါ်တာပေါ့၊ ။</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-    <div class="card">
-      <img src="static/images/reviews/mg-koko-300x300.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">မောင်ကိုကိုနှင့် မြနန္ဒ</h5>
-        <p class="card-text">ဇာတ်ကောင်တွေခဏခဏပြောင်းဖတ်နေရတာ နားကိုမလည်ဘူး ခံစားလို့လည်းမကောင်းဘူး တခြားဇာတ်ကောင်တယောက်ရဲ့ ရင်ထဲကအတွေးတွေကိုလည်း ကိုယ်ပိုင်လိုမျိုး ရေးပစ်လိုက်တာကပါသေး စာအုပ်ဖတ်ရတာထက် ရုပ်ရှင်ကြည့်ရသလိုဖြစ်နေတယ် စာဖတ်သူက ဇာတ်ကောင်တိုင်းကို သရဲလိုဝင်ပူးဖတ်နေရတာ အဆင်မပြေဘူး</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
+<br>
+<!-- Genre  -->
+<section class="gen-tags">
+  <div class="gen-tags">
+    <h1>Genres</h1>
+    {% for genre in genres %}
+    <form action="{% url 'genre_list' genre.name %}">
+        <button type="submit">{{ genre.name }}</button>
+    </form>
+    {% endfor %}
   </div>
+</section>
+<!-- Book quotes -->
+<section class="quote_container">
+  <div id="quote-container">
+    <p id="quote">"Books have a way of finding their way into our lives, usually, right when we need them the most."</p>
+    <p id="author">Jane Evershed</p>
+  </div>
+</section>
+
+<!-- feature of books reviews -->
+<section class="featured" id="featured">
+  <h1 class="heading"><span>Books Reviews</span></h1>
+  <div class="swiper featured-slider">
+    <div class="swiper-wrapper">
+
+      <div class="swiper-slide box">
+        <div class="icons">
+          <a href="#" class="fas fa-search"></a>
+          <a href="#" class="fas fa-heart"></a>
+          <a href="#" class="fas fa-eye"></a>
+        </div>
+        <div class="image">
+          <img src="static/images/reviews/Monk-600x600.png" class="card-img-top" alt="...">
+        </div>
+        <div class="content">
+          <h5 class="card-title">ဖာရာရီလမ်းခွဲ</h5>
+          <p class="card-text">အရမ်းကောင်းတဲ့ စာအုပ်တစ်အုပ်ပါ။ဤစာအုပ်ဖတ်ပြီးကျွန်တော်အများကြီးပြောင်းလဲလာတာတော့ တကယ်ပါ။လူငယ်တေ ဖတ်သင့်ပါ‌တယ်။</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+      <div class="swiper-slide box">
+        <div class="icons">
+          <a href="#" class="fas fa-search"></a>
+          <a href="#" class="fas fa-heart"></a>
+          <a href="#" class="fas fa-eye"></a>
+        </div>
+        <div class="image">
+          <img src="static/images/reviews/Apyin-Ka-Lu-600x600 (1).webp" class="card-img-top" alt="...">
+        </div>
+        <div class="content">
+          <h5 class="card-title">အပြင်ကလူ</h5>
+          <p class="card-text">အကွေ့ အပြောင်း တွေဇတ်ရှိတ် တွေကတော့ ထိမ်းမရအောင် ကိုကောင်းတာ။ အဲတာကြောင့်လည်း ဆရာမ ကြည်အေး လို့ခေါ်တာပေါ့၊</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+      <div class="swiper-slide box">
+        <div class="icons">
+          <a href="#" class="fas fa-search"></a>
+          <a href="#" class="fas fa-heart"></a>
+          <a href="#" class="fas fa-eye"></a>
+        </div>
+        <div class="image">
+          <img src="static/images/reviews/mg-koko-300x300.png" class="card-img-top" alt="...">
+        </div>
+        <div class="content">
+          <h5 class="card-title">မောင်ကိုကိုနှင့် မြနန္ဒ</h5>
+          <p id="burmese-text" class="card-text">ဇာတ်ကောင်တွေခဏခဏပြောင်းဖတ်နေရတာ နားကိုမလည်ဘူး ခံစားလို့လည်းမကောင်းဘူးsee more... <!-- တခြားဇာတ်ကောင်တယောက်ရဲ့ ရင်ထဲကအတွေးတွေကိုလည်း ကိုယ်ပိုင်လိုမျိုး ရေးပစ်လိုက်တာကပါသေး စာအုပ်ဖတ်ရတာထက် ရုပ်ရှင်ကြည့်ရသလိုဖြစ်နေတယ် စာဖတ်သူက ဇာတ်ကောင်တိုင်းကို သရဲလိုဝင်ပူးဖတ်နေရတာ အဆင်မပြေဘူး --></p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+      <div class="swiper-slide box">
+        <div class="icons">
+          <a href="#" class="fas fa-search"></a>
+          <a href="#" class="fas fa-heart"></a>
+          <a href="#" class="fas fa-eye"></a>
+        </div>
+        <div class="image">
+          <img src="static/images/reviews/Thu-Saitdat-Kya-Tine-600x600.png" class="card-img-top" alt="...">
+        </div>
+        <div class="content">
+          <h5 class="card-title">သူစိတ်ဓာတ်ကျတိုင်းဖတ်ဖို့</h5>
+          <p class="card-text">ဖတ်ဖူးသမျှစိတ်ခွန်အားဖြစ်စေတဲ့စာအုပ်တွေထဲမှာဒီစာအုပ်လေးအကောင်းဆုံးဘဲ။</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+      <div class="swiper-slide box">
+        <div class="icons">
+          <a href="#" class="fas fa-search"></a>
+          <a href="#" class="fas fa-heart"></a>
+          <a href="#" class="fas fa-eye"></a>
+        </div>
+        <div class="image">
+          <img src="static/images/reviews/Khwint-Hlouk-Tat-Pelar-75x75.png" class="card-img-top" alt="...">
+        </div>
+        <div class="content">
+          <h5 class="card-title">သင်ခွင့်လွှတ်တတ်ပြီလား</h5>
+          <p class="card-text">ခွင့်လွှတ်ချင်တယ်လူတိုင်းအပေါ်သည်းခံချင်စိတ်ရှိပါ‌တယ်။</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+      <div class="swiper-slide box">
+        <div class="icons">
+          <a href="#" class="fas fa-search"></a>
+          <a href="#" class="fas fa-heart"></a>
+          <a href="#" class="fas fa-eye"></a>
+        </div>
+        <div class="image">
+          <img src="static/images/reviews/nagatwat.png" class="card-img-top" alt="...">
+        </div>
+        <div class="content">
+          <h5 class="card-title">ငါ့အတွက်ငါရှိတယ်</h5>
+          <p class="card-text">အရမ်းကောင်းတဲ့စာအုပ်ကလေးပါမိမိကိုယ်ကိုအားကိုးတတ်တာတယ်။</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</section>
+<!-- rating-section -->
+<section class="rating-section">
+  <div class="rating">
+    <input type="radio" id="star5" name="rating" value="5" />
+    <label for="star5"></label>
+    <input type="radio" id="star4" name="rating" value="4" />
+    <label for="star4"></label>
+    <input type="radio" id="star3" name="rating" value="3" />
+    <label for="star3"></label>
+    <input type="radio" id="star2" name="rating" value="2" />
+    <label for="star2"></label>
+    <input type="radio" id="star1" name="rating" value="1" />
+    <label for="star1"></label>
+  </div>
+</section>
 
 {% endblock content %}
 {% include "footer.html" %}
