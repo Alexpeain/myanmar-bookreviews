@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from environs import Env
 from pathlib import Path
 import os
+from dotenv import load_dotenv
 # import socket
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -58,7 +59,7 @@ INSTALLED_APPS = [
     
 
 ]
-ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+# ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
 SITE_ID = 1
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
@@ -125,21 +126,30 @@ WSGI_APPLICATION = "bookreviews.wsgi.application"
 #         "NAME": BASE_DIR / "db.sqlite3",
 #     }
 # }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': env.str('DB_NAME'),
+#         'USER': env.str('DB_USER'),
+#         'PASSWORD': env.str('DB_USER_PASSWORD'),
+#         'HOST': env.str('DB_HOST'),
+#         'PORT': env.str('DB_PORT',),
+#     }
+# }
+# DATABASES = {
+#     "default": env.dj_db_url('DATABASE_URL',default = 'sqlite://db.sqlite3')
+# }
+#  Use DotEnv
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': os.environ.get('DB_NAME'),
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_USER_PASSWORD'),
-        'HOST': '127.0.0.1',
-        # 'PORT': '5342',
+        'HOST': os.environ.get('DB_HOST'), # Should be 'postgres'
+        'PORT': os.environ.get('DB_PORT'), # Should be '5432'
     }
-    
 }
-# DATABASES = {
-#     "default": env.dj_db_url('DATABASE_URL',default = 'sqlite://db.sqlite3')
-# }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -180,9 +190,13 @@ MEDIA_URL = "/media/" # new
 MEDIA_ROOT = BASE_DIR / "media"
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+STATIC_ROOT = BASE_DIR / "staticfiles"  # For production
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-ACCOUNT_USERNAME_REQUIRED = False # new
-ACCOUNT_AUTHENTICATION_METHOD = "email" # new
-ACCOUNT_EMAIL_REQUIRED = True # new
-ACCOUNT_UNIQUE_EMAIL = True
+# ACCOUNT_USERNAME_REQUIRED = False # new
+# ACCOUNT_AUTHENTICATION_METHOD = "email" # new
+# ACCOUNT_EMAIL_REQUIRED = True # new
+# ACCOUNT_UNIQUE_EMAIL = True
+
+ACCOUNT_LOGIN_METHODS = {"email"}
+ACCOUNT_SIGNUP_FIELDS = ["email*", "password1*"]

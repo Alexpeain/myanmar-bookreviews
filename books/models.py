@@ -21,7 +21,7 @@ class Book(models.Model):
     # description = models.TextField(null=True,blank=True)
     description = models.TextField(default='')
     cover = models.ImageField(upload_to=os.path.join('covers', ''),blank=True,null=True) #upload_to="covers/"
-    genres = models.ManyToManyField(Genre,null=True)
+    genres = models.ManyToManyField(Genre,blank=True)
     def __str__(self):
         return self.title
     
