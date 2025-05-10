@@ -1,0 +1,104 @@
+/* Container for the book detail */
+.container_detail {
+    margin: 40px auto;
+    max-width: 700px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    padding: 32px 24px;
+}
+
+/* Card styling */
+.card.mb-3 {
+    border: none;
+    background: transparent;
+}
+
+/* Book cover image */
+.img-fluid.rounded-start {
+    max-width: 100%;
+    max-height: 320px;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    margin: 0 auto;
+    display: block;
+}
+
+/* Card body */
+.card-body {
+    padding: 24px 16px;
+}
+
+/* Book title */
+.card-title {
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+/* Author and description */
+.card-text {
+    font-size: 1.3rem;
+    color: #444;
+    margin-bottom: 8px;
+}
+
+/* Genre section */
+.genre_text {
+    font-weight: bold;
+    margin-right: 8px;
+    font-size: 1.2rem;
+}
+
+.genre-button {
+    background: #ffe082;
+    border: none;
+    border-radius: 16px;
+    padding: 4px 14px;
+    margin: 0 4px 4px 0;
+    font-size: 1.1rem;
+    color: #333;
+    cursor: default;
+    transition: background 0.2s;
+}
+
+.genre-button:hover {
+    background: #ffd54f;
+}
+
+/* Reviews section */
+h3 {
+    margin-top: 32px;
+    font-size: 1.6rem;
+    color: #219150;
+}
+
+.list-group {
+    margin-top: 10px;
+    padding-left: 0;
+}
+
+.list-group-item {
+    border: none;
+    background: #f9f9f9;
+    margin-bottom: 6px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    color: #444;
+    padding: 10px 16px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container_detail {
+        padding: 16px 4px;
+    }
+    .card-body {
+        padding: 12px 4px;
+    }
+    .img-fluid.rounded-start {
+        max-height: 180px;
+    }
+}

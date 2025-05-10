@@ -28,6 +28,7 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path("api/", include("apis.urls")),
     path("books/", include("books.urls")),
+    path('blog/', include('blog.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

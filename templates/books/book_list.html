@@ -9,7 +9,7 @@
     {% for book in book_list %}
     <div class="col-sm-12 col-md-6 col-lg-3 pb-4">
       <div class="card h-100" style="border:none">
-        <img src="{{ book.cover.url }}" class="card-img-top" alt="{{ book.title }}" style="width: 200px; height: auto;">
+        <img src="{{ book.cover }}" class="card-img-top" alt="{{ book.title }}" style="width: 200px; height: auto;">
         <div class="card-body">
           <!-- <h5 class="card-text text-muted text-truncate">{{ book.get_absolute_url }}</h5> -->
           <p class="card-title" style="font-size: 14px;">{{ book.title }}</p>

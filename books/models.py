@@ -20,7 +20,7 @@ class Book(models.Model):
     author = models.CharField(max_length=200)
     # description = models.TextField(null=True,blank=True)
     description = models.TextField(default='')
-    cover = models.ImageField(upload_to=os.path.join('covers', ''),blank=True,null=True) #upload_to="covers/"
+    cover = models.URLField(blank=True, null=True)
     genres = models.ManyToManyField(Genre,blank=True)
     def __str__(self):
         return self.title

@@ -31,8 +31,7 @@ SECRET_KEY = env.str('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = False
 DEBUG = env.bool('DEBUG')
-ALLOWED_HOSTS = ["127.0.0.1"]
-
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
 # Application definition
 
@@ -50,6 +49,7 @@ INSTALLED_APPS = [
     'pages',
     'books',
     "apis.apps.ApisConfig",
+    "blog",
     
     "debug_toolbar",
     "crispy_forms", # new
@@ -69,8 +69,6 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5" # new
 CRISPY_TEMPLATE_PACK = "bootstrap5" #
 
-STATIC_URL = "/static/"
-STATICFILES_DIRS = [BASE_DIR / "static"]
 
 LOGIN_REDIRECT_URL = "home"
 ACCOUNT_LOGOUT_REDIRECT = "home"
@@ -185,7 +183,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "static/"
+STATICFILES_DIRS = [BASE_DIR / "static"]
+
+STATIC_URL = "/static/"
 MEDIA_URL = "/media/" # new
 MEDIA_ROOT = BASE_DIR / "media"
 # Default primary key field type
