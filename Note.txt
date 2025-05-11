@@ -1,2 +1,6 @@
 docker-compose exec web python manage.py import_books /app/all_pannsattlann_books.json
 for import_books 
+
+
+access postgresql via shell
+docker-compose exec postgres psql -U root myanmar_bookreviews

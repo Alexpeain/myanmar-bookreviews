@@ -20,7 +20,8 @@ venv/
 env/
 .myenv/
 ENV/
-.venv/
+.env
+
 
 # OS files
 .DS_Store
@@ -29,6 +30,6 @@ Thumbs.db
 # Docker
 *.pid
 
-# Migrations (optional, keep if you want to track them)
+Migrations (optional, keep if you want to track them)
 # books/migrations/
-# blog/migrations/
+blog/migrations/

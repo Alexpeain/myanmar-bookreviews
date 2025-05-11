@@ -4,11 +4,13 @@ from .models import Book,Genre
 from django.db.models import Q
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
+from django.core.paginator import Paginator
 
 
 class BookListView(ListView):
     model = Book
     context_object_name = "book_list"
+    paginate_by = 20 #add pagination
     template_name = "books/book_list.html"
 
 class BookDetailView(DetailView):
@@ -21,6 +23,7 @@ class BookDetailView(DetailView):
 
 class SearchResultsListView(ListView):
     model = Book
+    paginate_by = 20
     context_object_name="book_list"
     template_name ="books/search_results.html"
 

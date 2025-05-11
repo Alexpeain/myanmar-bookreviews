@@ -1,0 +1,22 @@
+{% extends "_base.html" %}
+
+{% block title %}Blog{% endblock title %}
+
+{% block content %}
+<div class="container py-4">
+    <h2 class="mb-4">Blog</h2>
+    <p>Welcome to the blog! Posts will appear here.</p>
+    <!-- Example: Loop through blog posts if you add them later -->
+    
+    {% for post in posts %}
+        <div class="mb-3">
+            <h4>{{ post.title }}</h4>
+            <p>{{ post.summary }}</p>
+            <a href="{% url 'blog_detail' post.pk %}">Read more</a>
+        </div>
+    {% empty %}
+        <p>No blog posts yet.</p>
+    {% endfor %}
+    
+</div>
+{% endblock content %}

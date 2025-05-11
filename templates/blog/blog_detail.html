@@ -1,0 +1,6 @@
+{% extends "_base.html" %}
+{% block content %}
+  <h2>{{ post.title }}</h2>
+  <p>by {{ post.author }} on {{ post.created_at|date:"Y-m-d" }}</p>
+  <div>{{ post.content|linebreaks }}</div>
+{% endblock %}
