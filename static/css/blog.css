@@ -1,0 +1,187 @@
+/*
+  Improved CSS for the Blog List Page
+  Includes styles for pagination and filter sections, building on v2.
+*/
+
+/* --- General Blog List Container --- */
+.blog-list {
+    padding-top: 40px; /* More padding at the top */
+    padding-bottom: 60px; /* More padding at the bottom */
+    background-color: #f8f9fa; /* Light background color for the section */
+}
+
+.blog-list h2 {
+    color: #212529; /* Darker, standard text color */
+    margin-bottom: 2rem; /* Increased space below the main heading */
+    font-weight: 700; /* Bold heading */
+    position: relative; /* Needed for the underline effect */
+    display: inline-block; /* Needed for the underline effect */
+}
+
+/* Simple underline effect for the main heading */
+.blog-list h2::after {
+    content: '';
+    display: block;
+    width: 60px; /* Width of the underline */
+    height: 4px; /* Thickness of the underline */
+    background-color: #007bff; /* Bootstrap primary blue */
+    margin: 8px auto 0; /* Center the underline and add space below */
+    border-radius: 2px; /* Slightly rounded ends for the underline */
+}
+
+
+.blog-list .text-muted {
+    color: #6c757d !important; /* Ensure standard muted color */
+    margin-bottom: 3rem; /* More space below the welcome message */
+    font-size: 1.1rem; /* Slightly larger font for the welcome message */
+    font-style: normal; /* Remove italic if it was applied */
+}
+
+
+/* --- Individual Blog Post Card Styling --- */
+.blog-list-item.card {
+    border: none; /* Remove default Bootstrap border */
+    border-radius: 10px; /* More pronounced rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Softer, more spread out shadow */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition */
+    background-color: #fff; /* White background for the card */
+}
+
+.blog-list-item.card:hover {
+    transform: translateY(-8px); /* Lift card more on hover */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12); /* More pronounced shadow on hover */
+}
+
+.blog-list-item .card-body {
+    padding: 2rem; /* More padding inside the card body */
+}
+
+/* --- Blog Title Styling --- */
+.blog-title {
+    margin-top: 0;
+    margin-bottom: 0.75rem; /* More space below the title */
+    font-size: 1.8rem; /* Larger font size for the title */
+    font-weight: 700; /* Bold title */
+    line-height: 1.3; /* Slightly tighter line height for title */
+}
+
+.blog-title a {
+    color: #343a40; /* Darker color for title link */
+    text-decoration: none; /* No underline by default */
+    transition: color 0.2s ease-in-out; /* Smooth color transition on hover */
+}
+
+.blog-title a:hover {
+    color: #0056b3; /* Darker shade of primary blue on hover */
+    text-decoration: underline; /* Add underline on hover */
+}
+
+/* --- Blog Meta Styling (Author, Date) --- */
+.blog-meta {
+    font-size: 0.95rem !important; /* Slightly larger than previous version */
+    color: #868e96 !important; /* Lighter muted color */
+    margin-bottom: 1.5rem; /* More space below meta info */
+    font-style: normal;
+}
+
+/* --- Blog Excerpt Styling --- */
+.blog-excerpt {
+    margin-bottom: 2rem; /* More space below the excerpt */
+    line-height: 1.7; /* Increased line height for better readability */
+    color: #495057; /* Standard text color */
+    font-size: 1rem; /* Standard font size */
+}
+
+/* --- Read More Button Styling --- */
+.blog-list-item .btn-outline-primary {
+    font-size: 1rem; /* Standard button font size */
+    padding: 0.5rem 1rem; /* Standard button padding */
+    border-radius: 5px; /* Standard rounded corners */
+    font-weight: 500; /* Medium font weight */
+    transition: all 0.2s ease-in-out; /* Smooth transition for hover */
+}
+
+.blog-list-item .btn-outline-primary:hover {
+    background-color: #007bff; /* Fill with primary color on hover */
+    color: #fff; /* White text on hover */
+    box-shadow: 0 2px 6px rgba(0, 123, 255, 0.2); /* Subtle shadow on hover */
+}
+
+/* --- Styling for the "No posts yet" message --- */
+.blog-list .col-12.text-center p.no-posts-message { /* Added .no-posts-message class */
+    color: #adb5bd; /* Lighter gray color */
+    font-style: italic;
+    font-size: 1.2rem; /* Slightly larger font */
+    margin-top: 40px; /* Space above the message */
+}
+
+/* --- Filter Section Styling --- */
+.filter-section.card {
+    border: none; /* Remove default card border */
+    border-radius: 8px; /* Slightly rounded corners */
+    background-color: #e9ecef; /* Light gray background */
+    box-shadow: none; /* No shadow for the filter card */
+}
+
+.filter-section h5 {
+    color: #343a40; /* Darker heading color */
+    font-weight: 600;
+    margin-bottom: 1rem; /* Space below filter heading */
+}
+
+.filter-section .btn-outline-secondary {
+    border-color: #ced4da; /* Lighter border color */
+    color: #495057; /* Standard text color */
+    transition: all 0.2s ease-in-out;
+}
+
+.filter-section .btn-outline-secondary:hover {
+    background-color: #d3d9df; /* Slightly darker background on hover */
+    color: #212529; /* Darker text on hover */
+    border-color: #ced4da; /* Keep border color */
+}
+
+.filter-section .btn-outline-secondary.active {
+    background-color: #6c757d; /* Darker gray for active state */
+    color: #fff; /* White text for active state */
+    border-color: #6c757d;
+}
+
+/* --- Pagination Styling --- */
+.pagination .page-item .page-link {
+    color: #007bff; /* Primary color for links */
+    border-color: #dee2e6; /* Light border color */
+    transition: all 0.2s ease-in-out;
+}
+
+.pagination .page-item .page-link:hover {
+    color: #0056b3; /* Darker primary color on hover */
+    background-color: #e9ecef; /* Light gray background on hover */
+    border-color: #dee2e6;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #007bff; /* Primary color for active page */
+    border-color: #007bff;
+    color: #fff; /* White text for active page */
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #6c757d; /* Muted color for disabled links */
+}
+
+.pagination .page-item.disabled .page-link:hover {
+    background-color: transparent; /* No hover effect for disabled */
+    border-color: #dee2e6; /* Keep light border color */
+}
+
+@media (max-width: 600px) {
+    .blog-list,
+    .blog-detail {
+        padding: 0 0.5rem;
+    }
+    .blog-title,
+    .blog-detail-title {
+        font-size: 1.2rem;
+    }
+}

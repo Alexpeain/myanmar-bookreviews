@@ -7,7 +7,7 @@ class BlogListView(ListView):
     template_name = "blog/blog_list.html"
     context_object_name = "posts"
     ordering = ['-created_at']
-    paginate_by = 10  # Number of posts per page
+    paginate_by = 20  # Number of posts per page
     
 
 class BlogDetailView(DetailView):

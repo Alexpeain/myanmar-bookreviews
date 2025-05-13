@@ -18,6 +18,18 @@ class Command(BaseCommand):
         target_count = 100  # Your target number of books
         book_data = []  # Initialize book_data to track all books considered
 
+        # Check Robots.txt for scraping permissions
+        robots_url = "https://www.pannsattlann.com/robots.txt"
+        try:    
+            robots_response = requests.get(robots_url, headers=headers)
+            robots_response.raise_for_status()
+            if "Disallow: /shop/" in robots_response.text:
+                self.stdout.write(self.style.ERROR("Scraping this site is not allowed according to robots.txt."))
+                return
+        except requests.exceptions.RequestException as e:
+            self.stdout.write(self.style.ERROR(f"Error fetching robots.txt: {e}"))
+            return  
+        
         while scraped_count < target_count:
             if page_num == 1:
                 url = "https://www.pannsattlann.com/shop/"

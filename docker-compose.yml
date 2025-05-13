@@ -5,7 +5,7 @@ services:
     build: . # <--- Build using the Dockerfile in the current directory
     command: python manage.py runserver 0.0.0.0:8000 # Command to run the development server
     volumes:
-      - d:/all_pannsattlann_books.json:/app/all_pannsattlann_books.json # Mount your project code into the container for easy development updates
+      - .:/app # Mount your project code into the container for easy development updates
     ports:
       - "8001:8001" # Map host port 8000 to container port 8000
     env_file:
