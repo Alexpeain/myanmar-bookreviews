@@ -25,16 +25,17 @@
         <div class="header-2">
             <nav class="navbar">
                 <a href="{% url 'home' %}">Home</a>
-                <a href="{% url 'book_list' %}">Book</a>
+                <a href="{% url 'book_list' %}">စာအုပ်များ</a>
                 <div class="dropdown">
-                    <a href="#" class="dropdown-toggle dropdown-toggle-no-caret" data-bs-toggle="dropdown" aria-expanded="false">Genres</a>
+                    <a href="#" class="dropdown-toggle dropdown-toggle-no-caret" data-bs-toggle="dropdown" aria-expanded="false">အမျိုးအစားများ</a>
                     <ul class="dropdown-menu">
                         {% for genre in genres %}
-                            <li><a href="/genres/{{ genre.name }}/">{{ genre.name }}</a></li>
+                            <!-- <li><a href="/genres/{{ genre.name }}/">{{ genre.name }}</a></li> -->
+                            <li><a href="{% url 'genre_list' genre.name %}">{{ genre.name }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
-                <a href="#">Reviews</a>
+                <a href="#">စာအုပ် ဝေဖန်ချက်</a>
                 <a href="{% url 'blog_home' %}">Blog</a>
               
             </nav>

@@ -13,6 +13,13 @@ class BookListView(ListView):
     paginate_by = 20 #add pagination
     template_name = "books/book_list.html"
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        author = self.request.GET.get("author")
+        if author:
+            queryset = queryset.filter(author__iexact=author)
+        return queryset
+    
 class BookDetailView(DetailView):
     model = Book
     context_object_name = "book"

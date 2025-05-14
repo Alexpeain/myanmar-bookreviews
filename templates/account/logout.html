@@ -17,4 +17,14 @@
       </div>
     </form>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const cancelBtn = document.querySelector('.cancel-button');
+    if (cancelBtn) {
+        cancelBtn.addEventListener('click', function() {
+            window.history.back(); 
+        });
+    }
+});
+</script>
 {% endblock content %}

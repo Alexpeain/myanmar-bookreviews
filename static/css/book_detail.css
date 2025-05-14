@@ -44,7 +44,21 @@
     color: #444;
     margin-bottom: 8px;
 }
-
+.author-button {
+    background: #b3e5fc;
+    border: none;
+    border-radius: 16px;
+    padding: 4px 14px;
+    margin: 0 4px 4px 0;
+    font-size: 1.1rem;
+    color: #1565c0;
+    cursor: default;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+.author-button:hover {
+    background: #81d4fa;
+}
 /* Genre section */
 .genre_text {
     font-weight: bold;

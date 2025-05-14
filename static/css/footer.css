@@ -1,0 +1,161 @@
+/* Basic Footer Styling */
+.footer {
+    background-color: #f8f8f8; /* Example background color */
+    padding: 40px 20px; /* Add some padding */
+    font-family: sans-serif; /* Example font */
+    display: block; /* Ensure footer is a block element */
+    overflow: hidden; /* Clear floats within the footer if any exist */
+}
+
+.box-container {
+    display: flex; /* Use flexbox for layout */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: space-around; /* Distribute space around items */
+    max-width: 1200px; /* Optional: Limit max width of the footer content */
+    margin: 0 auto; /* Center the container */
+}
+
+.footer-content {
+    margin: 20px; /* Add margin around each content block */
+    flex: 1 1 200px; /* flex-grow, flex-shrink, flex-basis */
+    min-width: 180px; /* Ensure minimum width on larger screens */
+    box-sizing: border-box; /* Include padding/border in size calculation */
+}
+
+.footer-content img {
+    display: block; /* Make image a block element */
+    margin-bottom: 10px; /* Space below the logo */
+}
+
+.footer-content p {
+    margin-bottom: 5px; /* Space below paragraphs */
+    font-size: 0.9rem;
+    color: #555; /* Example text color */
+}
+
+.footer-content p span {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #333; /* Example color for the span */
+}
+
+.footer-content h4 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #333; /* Example heading color */
+}
+
+.footer-content ul {
+    list-style: none; /* Remove default list bullets */
+    padding: 0;
+    margin: 0;
+}
+
+.footer-content li {
+    margin-bottom: 8px; /* Space between list items */
+}
+
+.footer-content a {
+    text-decoration: none; /* Remove underline from links */
+    color: #555; /* Example link color */
+    font-size: 0.9rem;
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.footer-content a:hover {
+    color: #007bff; /* Example hover color */
+}
+
+.footer-content .d-flex {
+    display: flex; /* Use flexbox for social icons */
+    gap: 15px; /* Space between icons */
+    /* On larger screens, default alignment is fine */
+}
+
+.footer-content .d-flex a {
+    font-size: 1.5rem; /* Icon size */
+    color: #555; /* Icon color */
+}
+
+.footer-content .d-flex a:hover {
+     color: #007bff; /* Example hover color */
+}
+
+/* Credit line styling */
+.credit {
+    display: block; /* Ensure it's a block element */
+    clear: both; /* Clear any potential floats before it */
+    text-align: center; /* Center the text */
+    margin-top: 30px; /* Space above the credit line */
+    padding-top: 20px; /* Add padding above the line */
+    border-top: 1px solid #ccc; /* Add a top border line */
+    font-size: 0.9rem;
+    color: #555;
+    width: 100%; /* Ensure it takes full width */
+}
+
+.credit span {
+    font-weight: bold;
+}
+
+/* Mobile responsiveness - 3 column layout */
+@media (max-width: 768px) { /* Adjust breakpoint as needed for 'mobile' */
+    .box-container {
+        flex-direction: row; /* Keep row direction */
+        flex-wrap: wrap; /* Keep wrapping */
+        justify-content: center; /* Center the columns on mobile */
+        padding: 0 10px; /* Adjust horizontal padding */
+    }
+
+    .footer-content {
+        margin: 10px; /* Reduce margin on mobile */
+        flex-grow: 0; /* Prevent growing */
+        flex-shrink: 0; /* Prevent shrinking */
+        box-sizing: border-box; /* Include padding/border in the element's total width */
+        text-align: center; /* Center content within the mobile columns */
+    }
+
+    /* Target the first, second, and fifth footer-content divs for the 3-column layout */
+    .box-container .footer-content:nth-child(1), /* logo/text */
+    .box-container .footer-content:nth-child(2), /* Book & Nook links */
+    .box-container .footer-content:nth-child(5) /* icons */ {
+         flex-basis: calc(33.33% - 20px); /* Set basis for 3 columns, accounting for margin */
+         min-width: 100px; /* Optional: minimum width for mobile columns */
+    }
+
+    /* Target the third and fourth footer-content divs to stack below */
+    .box-container .footer-content:nth-child(3), /* Contacts */
+    .box-container .footer-content:nth-child(4) /* Extra links */ {
+        flex-basis: 100%; /* Make these divs take full width */
+        margin-left: 10px; /* Maintain horizontal margin */
+        margin-right: 10px; /* Maintain horizontal margin */
+    }
+
+    /* Adjust alignment for the icons div on mobile */
+    .footer-content:nth-child(5) .d-flex {
+        justify-content: center; /* Center the icons within their column */
+    }
+
+    .footer-content img {
+        margin-left: auto;
+        margin-right: auto; /* Center the logo */
+    }
+}
+
+/* Optional: Further adjustments for very small screens if needed */
+@media (max-width: 480px) {
+     /* Example: Stack all items on very small screens below 480px */
+
+    .box-container .footer-content:nth-child(1),
+    .box-container .footer-content:nth-child(2),
+    .box-container .footer-content:nth-child(5),
+    .box-container .footer-content:nth-child(3),
+    .box-container .footer-content:nth-child(4) {
+        flex-basis: 100%; /* Stack all items */
+        margin: 10px 0; /* Adjust vertical margin */
+    }
+
+    .footer-content .d-flex {
+        justify-content: center; /* Center icons when stacked */
+    }
+}

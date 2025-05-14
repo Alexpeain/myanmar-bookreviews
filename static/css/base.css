@@ -216,34 +216,6 @@ header {
 /* genre_list_view */
 
 
-/* body {
-  height: 300rem;
-} */
-/* dropdown
-
-
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  background-color: #fff;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-  margin-top: 5px;
-}
-
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
-
-.dropdown-menu li {
-  padding: 10px;
-}
-
-.dropdown-menu li:hover {
-  background-color: #f9f9f9;
-} */
-
 
 /* bottom navbar */
 .bottom-navbar{
@@ -454,82 +426,7 @@ section{
   transform: rotateY(180deg);
 }
 
-/* footer */
-.footer .box-container {
-  border-top: var(--border);
-  margin-top: 3rem;
-  padding: 0 1.8rem;
-  padding-top: 3.5rem;
-  display: flex;
-  grid-template-columns: repeat(auto-fit,minmax(25rem,1fr));
-  gap: 10rem;
-}
 
-.footer .box-container .footer-content h4 {
-  font-size: 2.2rem;
-  color: var(--black);
-  padding: 1rem 0;
-  margin-bottom: 1rem;
-}
-
-.footer .box-container .footer-content a {
-  display: block;
-  font-size: 1.4rem;
-  color: var(--light-color);
-  padding: 1rem 0;
-  font-weight: 400;
-  transition: all .40s ease;
-  text-decoration: none;
-}
-.footer .box-container .footer-content a i{
-  color: var(--black);
-  height: 5rem;
-  width: 5rem;
-  line-height: 5rem;
-  font-size: 3rem;
-  margin: 0 .3rem;
-  border-radius: 50%;
-  padding: 4px;
-  margin: 4px;
-  
-}
-.footer .box-container .footer-content li a:hover {
-  transform: translateY(-3px) translateX(-5px);
-  color: #050505;
-}
-.footer .box-container .footer-content a i:hover {
-  transform: translateY(-3px) translateX(-5px);
-  color: var(--dark-color);
-}
-.email{
-  text-transform: lowercase;
-
-}
-.footer .box-container .footer-content p span {
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 26px;
-  margin-top: 1.5rem;
-  margin: 20px 0;
-  
-}
-.footer .box-container .footer-content .d-flex {
-  display: flex;
-  flex-direction: row;
-}
-.footer .credit {
-  border-top: var(--border);
-  margin-top: 2rem;
-  padding: 0 1rem;
-  padding-top: 2.5rem;
-  font-size: 2rem;
-  color: var(--light-color);
-  text-align: center;
-}
-.footer .credit span {
-  color: var(--green);
-
-}
 .dropdown {
   position: relative;
 }
@@ -867,9 +764,20 @@ section{
   display: none;
 }
 /* booklistview */
-/* .car-img, .card-img-top{
-  margin-top: 10rem;
-}  */
+.book-list-title {
+  color:#212529;
+  margin-bottom: 4rem;
+  margin-bottom: 4rem;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  font-size: 2.4rem;
+  letter-spacing: 1px;
+  background: #fff;
+  padding: 0.5rem 2rem; 
+  
+}
+
 .card-img-top {
   display: block;
   margin-left: auto;
@@ -1033,20 +941,7 @@ section{
     padding: 10px;
     color: #000;
   } */
-  .footer .credit {
-      position: fixed;
-      left: 0;
-      width: 100px;
-      bottom: 0;
-      /* border-top: var(--border);
-      margin-top: 2rem;
-      padding: 0 1rem;
-      padding-top: 2.5rem;
-      font-size: 2rem;
-      color: var(--light-color);
-      text-align: center;
-      word-wrap: break-word; Add this property to allow long words to wrap */
-    }
+
 }
 @media (max-width:450px) {
   html{
