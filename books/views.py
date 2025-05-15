@@ -13,12 +13,25 @@ class BookListView(ListView):
     paginate_by = 20 #add pagination
     template_name = "books/book_list.html"
 
+    # when request to search for books by author or genre
+    # we need to filter the queryset based on the search criteria
     def get_queryset(self):
         queryset = super().get_queryset()
         author = self.request.GET.get("author")
+        genre = self.request.GET.get("genre")
         if author:
             queryset = queryset.filter(author__iexact=author)
+        if genre:
+            queryset = queryset.filter(genres__name__iexact=genre) 
         return queryset
+    
+    # beside object_list : using get_context_data to add additional context
+    # to the template
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['genres'] = Genre.objects.all()
+        context['authors'] = Book.objects.values_list('author', flat=True).distinct()
+        return context
     
 class BookDetailView(DetailView):
     model = Book
@@ -52,3 +65,6 @@ def genre_list(request, genre_name):
     genre = get_object_or_404(Genre, name=genre_name)
     books = Book.objects.filter(genres=genre)
     return render(request, 'books/genre_list.html', {'genre': genre, 'books': books})
+
+  
+    

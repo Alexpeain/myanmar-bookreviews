@@ -194,6 +194,25 @@ header {
   transform: translateY(-3px) translateX(-5px);
   color: #050505;
 }
+/* Genres in Booklistview */
+/* .genre-button, .author-button {
+    background: #ffe082;
+    border: none;
+    border-radius: 1em;
+    padding: 0.5rem 1.2em;
+    margin: 0.25em 0.5em 0.25em 0;
+    font-size: 1.2rem;
+    color: #795548;
+    cursor: pointer;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.genre-button:hover, .author-button:hover {
+    background: #ffd54f;
+    color: #3e2723;
+    transform: translateY(-2px) scale(1.05);
+} */
 /* genres in bookdetail  */
 .col-md-8 .card-text button {
   font-size: 12px;
@@ -764,7 +783,7 @@ section{
   display: none;
 }
 /* booklistview */
-.book-list-title {
+/* .book-list-title {
   color:#212529;
   margin-bottom: 4rem;
   margin-bottom: 4rem;
@@ -776,7 +795,7 @@ section{
   background: #fff;
   padding: 0.5rem 2rem; 
   
-}
+} */
 
 .card-img-top {
   display: block;

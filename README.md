@@ -2,10 +2,18 @@
 
 <br> Myanmar BookReviews MyanBookReviews
 
+### Description
 ### Purpose of the project
 
 - Learn By Building Focus on Backend Development
 - For passion as an avid reader who does't have time and want to save time
+
+### Set up the installations
+set virtual environments
+```
+python -m venv .myenv
+```
+
 
 #### Backend stacks and Configuration
 
