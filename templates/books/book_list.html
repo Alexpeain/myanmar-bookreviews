@@ -5,10 +5,11 @@
 {% block content %}
 <div class="container_list py-3">
   <h2 class="book-list-title">စာအုပ်များအာလုံး</h2>
+  
   <section class="filter-section mb-4">
     <div class="row align-items-center mb-2">
       <div class="col-md-2 col-12 label-col">
-        <strong>Genres to choose:</strong>
+        <strong>စာအုပ်အမျိုးအစားများ :</strong>
       </div>
       <div class="col-md-10 col-12">
         <div class="filter-btns">
@@ -23,7 +24,7 @@
     </div>
     <div class="row align-items-center">
       <div class="col-md-2 col-12 label-col">
-        <strong>Author:</strong>
+        <strong>စာ‌ရေးသူ :</strong>
       </div>
       <div class="col-md-10 col-12">
         <div class="filter-btns">
@@ -37,6 +38,7 @@
       </div>
     </div>
   </section>
+<hr class="book-list-divider">
 <div class="row">
   {% for book in book_list %}
     <div class="col-sm-12 col-md-6 col-lg-3 pb-4">
