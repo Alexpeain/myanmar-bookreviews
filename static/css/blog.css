@@ -24,7 +24,7 @@
     display: block;
     width: 60px; /* Width of the underline */
     height: 4px; /* Thickness of the underline */
-    background-color: #007bff; /* Bootstrap primary blue */
+    background-color:var(--black); /* Bootstrap primary blue */
     margin: 8px auto 0; /* Center the underline and add space below */
     border-radius: 2px; /* Slightly rounded ends for the underline */
 }
@@ -102,7 +102,7 @@
 }
 
 .blog-list-item .btn-outline-primary:hover {
-    background-color: #007bff; /* Fill with primary color on hover */
+    background-color: var(--black); /* Fill with primary color on hover */
     color: #fff; /* White text on hover */
     box-shadow: 0 2px 6px rgba(0, 123, 255, 0.2); /* Subtle shadow on hover */
 }

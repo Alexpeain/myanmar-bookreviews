@@ -7,8 +7,15 @@ class BookAdmin(admin.ModelAdmin):
     inlines = [
         ReviewInline,
     ]
-    list_display = ("title", "author", "Bid")
+    list_display = ("title", "author", "display_genres","slug")
+    # Because genres is manytomany 
+    def display_genres(self, obj):
+        """
+        Creates a comma-separated string of genres for the list view.
+        """
+        return ", ".join([genre.name for genre in obj.genres.all()])
 
+    display_genres.short_description = "Genres"
 
 admin.site.register(Book, BookAdmin)
 admin.site.register(Genre)

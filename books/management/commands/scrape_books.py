@@ -11,7 +11,7 @@ from django.core.files import File # To wrap downloaded image data
 from django.core.files.temp import NamedTemporaryFile # To save temporary image file
 
 # Import your Book model
-from your_app_name.models import Book # Replace 'your_app_name' with the actual name of your Django app
+from books.models import Book # Replace 'your_app_name' with the actual name of your Django app
 
 # --- Scraping Configuration ---
 BASE_SHOP_URL = 'https://www.pannsattlann.com/shop/'

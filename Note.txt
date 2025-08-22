@@ -4,3 +4,18 @@ for import_books
 
 access postgresql via shell
 docker-compose exec postgres psql -U root myanmar_bookreviews
+
+check the data in the table 
+using shell to check file inside the docker can use cat
+docker exec -it myanmar-bookreviews-web-1 /bin/sh
+python manage.py shell
+
+\dt
+SELECT * FROM book;
+or
+
+recommand to check postgresql instance in docker 
+docker exec -it postgres_container1 psql -U root -d myanmar_bookreviews
+
+Load data to docker postgresl in django
+docker exec -it myanmar-bookreviews-web-1 python manage.py load_books scrapedbook/scraped_books_data.json

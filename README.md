@@ -3,17 +3,39 @@
 <br> Myanmar BookReviews MyanBookReviews
 
 ### Description
+
 ### Purpose of the project
 
 - Learn By Building Focus on Backend Development
 - For passion as an avid reader who does't have time and want to save time
 
 ### Set up the installations
+
 set virtual environments
+
 ```
 python -m venv .myenv
 ```
 
+### Docker
+
+```
+docker-compose up
+```
+
+### Migrate the date
+
+```docker-compose exec web python manage.py migrate
+
+```
+
+### Createsuperuser
+
+docker-compose exec web python manage.py createsuperuser
+
+### Set the runserver
+
+`docker-compose exec web python manage.py runserver 0.0.0.0:8001`
 
 #### Backend stacks and Configuration
 

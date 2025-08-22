@@ -109,7 +109,7 @@
 <!-- Genre  -->
 <section class="gen-tags">
   <div class="gen-tags">
-    <h1>ဖတ်ရှု့မည့်စာအုပ်အမျိုးအစားများ </h1>
+    <h1>ဖတ်ရှု့နိုင်မည့်စာအုပ်အမျိုးအစားများ </h1>
     {% for genre in genres %}
     <form action="{% url 'genre_list' genre.name %}">
         <button type="submit">{{ genre.name }}</button>
@@ -127,7 +127,7 @@
 
 <!-- feature of books reviews -->
 <section class="featured" id="featured">
-  <h1 class="heading"><span>Books Reviews</span></h1>
+  <h1 class="heading"><span>စာအုပ်ဝေဖန်ချက်များ</span></h1>
   <div class="swiper featured-slider">
     <div class="swiper-wrapper">
 

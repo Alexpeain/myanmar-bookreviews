@@ -33,3 +33,7 @@ Thumbs.db
 Migrations (optional, keep if you want to track them)
 # books/migrations/
 blog/migrations/
+
+# Scrapebook
+scrapedbook/
+

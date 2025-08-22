@@ -1,5 +1,5 @@
 asgiref
-Django==5.2
+Django
 sqlparse==0.4.4
 tzdata==2023.3
 psycopg2-binary== 2.9.10
@@ -13,3 +13,6 @@ whitenoise==6.6.0
 dj-database-url
 python-dotenv==1.0.0
 djangorestframework
+requests
+beautifulsoup4
+Unidecode
