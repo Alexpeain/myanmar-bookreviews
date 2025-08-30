@@ -93,7 +93,7 @@ class Command(BaseCommand):
           {"name": "အညွှန်းစာအုပ်များ", "description": None},
           {"name": "စာနယ်ဇင်း စာအုပ်များ", "description": None},
           {"name": "မဂ္ဂဇင်း စာအုပ်များ", "description": None},
-          {"name": "လစဉ်/အပတ်စဉ်ထုတ်စာအုပ်များ", "description": None},
+          {"name": "လစဉ်အပတ်စဉ်ထုတ်စာအုပ်များ", "description": None},
           {"name": "English Version Books", "description": None},
           {"name": "Children & Kid Books", "description": None},
           {"name": "English Version Books", "description": None},

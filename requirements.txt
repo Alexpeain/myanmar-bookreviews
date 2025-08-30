@@ -16,3 +16,4 @@ djangorestframework
 requests
 beautifulsoup4
 Unidecode
+# python-slugify

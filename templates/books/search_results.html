@@ -1,13 +1,61 @@
 {% extends "_base.html" %}
+{% load static %}
 {% block title %}Search{% endblock title %}
-{% block content %}
-<h1>Search Results</h1>
-{% for book in book_list %}
-<div>
-<h3><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h3>
-<p>Author: {{ book.author }}</p>
-<p>Description: {{ book.description }}</p>
-</div>
-{% endfor %}
 
+{% block content %}
+<div class="container_list py-3">
+  <h2 class="book-list-title">Search Results</h2>
+  <hr class="book-list-divider">
+  <div class="row">
+    {% for book in book_list %}
+    <div class="col-sm-12 col-md-6 col-lg-3 pb-4">
+      <div class="book-tile text-center">
+        <img src="{{ book.cover }}" class="mx-auto d-block" alt="{{ book.title }}" style="width: 200px; height: auto;">
+        <div>
+          <h5 class="book-title" style="font-size: 1.5rem; font-weight: 600;">{{ book.title }}</h5>
+          <p class="book-author" style="font-size: 1.2rem; color: #666;">{{ book.author }}</p>
+          <div>
+            <a href="{% url 'book_detail' book.slug %}" class="btn btn-warning">View Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+      <p>No results found for your search.</p>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% if is_paginated %}
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      {% if page_obj.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?q={{ request.GET.q }}&page={{ page_obj.previous_page_number }}">Previous</a>
+      </li>
+      {% else %}
+      <li class="page-item disabled"><span class="page-link">Previous</span></li>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+      {% if page_obj.number == num %}
+      <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+      {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+      <li class="page-item"><a class="page-link" href="?q={{ request.GET.q }}&page={{ num }}">{{ num }}</a></li>
+      {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?q={{ request.GET.q }}&page={{ page_obj.next_page_number }}">Next</a>
+      </li>
+      {% else %}
+      <li class="page-item disabled"><span class="page-link">Next</span></li>
+      {% endif %}
+    </ul>
+  </nav>
+  {% endif %}
+</div>
 {% endblock content %}
+{% include "footer.html" %}

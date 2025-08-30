@@ -21,6 +21,9 @@ services:
       POSTGRES_DB: ${DB_NAME} # Get DB_NAME from .env
       POSTGRES_USER: ${DB_USER} # Get DB_USER from .env
       POSTGRES_PASSWORD: ${DB_USER_PASSWORD} # Get DB_USER_PASSWORD from .env
+      LC_ALL: C.UTF-8 # Best practice for Unicode
+      LC_COLLATE: C.UTF-8 # Sets collation for case-insensitive sorting
+      LC_CTYPE: C.UTF-8 # Sets character classification for matchin
     ports:
       - "5432:5432" # Map host port 5432 to container port 5432 (optional, useful for connecting with external tools like pgAdmin)
     volumes:

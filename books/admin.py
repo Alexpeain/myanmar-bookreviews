@@ -4,10 +4,12 @@ from .models import Book,Review,Genre
 class ReviewInline(admin.TabularInline):
     model = Review
 class BookAdmin(admin.ModelAdmin):
+    exclude = ('slug',) # adding this to avoid showing slug field in admin form and because of unedited slug field
     inlines = [
         ReviewInline,
     ]
-    list_display = ("title", "author", "display_genres","slug")
+    list_display = ("title", "author", "display_genres")
+    search_fields = ("title", "author")
     # Because genres is manytomany 
     def display_genres(self, obj):
         """

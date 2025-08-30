@@ -1,0 +1,100 @@
+/* Styles for the main page container */
+.container_list {
+    max-width: 960px; /* Or whatever width you've set for booklist */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Styles for the title of the page */
+.book-list-title {
+    color: #212529;
+    margin-top: 1rem;
+    font-weight: 700;
+    font-size: 2.4rem;
+    letter-spacing: 1px;
+    text-align: center;
+    position: relative;
+    background: none;
+    padding: 0.5rem 0;
+}
+
+/* Styles for the dashed divider line */
+.book-list-divider {
+    border: none;
+    border-top: 2px dashed var(--black); /* Assuming --black is defined in your root or base CSS */
+    width: 90%;
+    margin: 1rem auto 4rem auto;
+    text-align: left;
+    border-radius: 2px;
+    opacity: .3;
+}
+
+/* Styles for the individual book tiles within the grid */
+.book-tile {
+    /* To ensure proper alignment and spacing for book information */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    background-color: #f8f9fa; /* Light background for the tile */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    height: 100%; /* Ensures all tiles in a row have the same height */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Hover effect for the book tiles */
+.book-tile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Styles for the book cover image */
+.book-tile img {
+    width: 200px; /* Keep the consistent width */
+    height: auto;
+    border-radius: 4px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+/* Styles for the book title */
+.book-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Styles for the book author */
+.book-author {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* Styles for the "View Details" button */
+.btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #212529;
+    font-weight: 600;
+    padding: 8px 20px;
+    border-radius: 50px;
+    text-decoration: none; /* Remove underline from links */
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+    border-color: #d39e00;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .book-list-title {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+}
