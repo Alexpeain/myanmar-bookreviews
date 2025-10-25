@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # third party
     "rest_framework",
+    'corsheaders',
     #app
     'accounts',
     'pages',
@@ -74,6 +75,7 @@ LOGIN_REDIRECT_URL = "home"
 ACCOUNT_LOGOUT_REDIRECT = "home"
 AUTH_USER_MODEL = "accounts.CustomUser"
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.cache.UpdateCacheMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -200,3 +202,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 ACCOUNT_LOGIN_METHODS = {"email"}
 ACCOUNT_SIGNUP_FIELDS = ["email*", "password1*"]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8000",
+    "http://localhost:3000",
+    # Add other allowed origins here (e.g., your production frontend domain)
+]

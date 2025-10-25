@@ -10,7 +10,8 @@
 
 ### ⚙️ Automation
 
-- [ ] Automate pagination check for scraped book sites (e.g. cron job to detect new books daily)
+~~ - [ ] Automate pagination check for scraped book sites (e.g. cron job to detect new books daily) ~~
+
 - [ ] using n8n for automation
 
 ---
@@ -134,6 +135,11 @@
 - [ ] Cache average ratings (5–10 min)
 - [ ] Invalidate cache on review save/delete
 
+### CORS Configuration
+
+- [x] Install `django-cors-headers`
+- [x] Add `corsheaders` to `INSTALLED_APPS`
+
 ### 🚦 Rate Limiting
 
 - [ ] Limit to 5 reviews/user/hour
@@ -180,3 +186,70 @@
   - Update Rating Aggregate
 
 ---
+
+📚 How to Generate an SEO Sitemap in Django
+To generate an SEO sitemap for your Burmese book reviews in Django, you can use Django's built-in sitemap framework. This is the most efficient and standard method. Here are the steps:
+
+Enable the sitemaps framework:
+
+Add 'django.contrib.sitemaps' to your INSTALLED_APPS in settings.py.
+
+Also, ensure that 'django.contrib.sites' is in INSTALLED_APPS, as the sitemap framework depends on it.
+
+Define your sitemap class:
+
+Create a file (e.g., sitemaps.py) in your app.
+
+Inside, create a Sitemap subclass. To handle book reviews, you would query the Book model.
+
+Example Code:
+
+# myapp/sitemaps.py
+
+from django.contrib.sitemaps import Sitemap
+from .models import Book
+
+class BookSitemap(Sitemap):
+changefreq = "weekly"
+priority = 0.9
+
+    def items(self):
+        return Book.objects.all()
+
+    def lastmod(self, obj):
+        return obj.last_modified
+
+Configure urls.py:
+
+Import the sitemaps from your app and sitemap from Django.
+
+Define a dictionary to map a name to your sitemap class.
+
+Add a URL pattern to serve the sitemap.
+
+Example Code:
+
+# myproject/urls.py
+
+from django.contrib.sitemaps.views import sitemap
+from django.urls import path
+from myapp.sitemaps import BookSitemap
+
+sitemaps = {
+'books': BookSitemap,
+}
+
+urlpatterns = [
+path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+
+# ... other paths
+
+]
+
+Update your SITE_ID:
+
+The sitemaps framework uses the SITE_ID from django.contrib.sites.
+
+In settings.py, make sure you have SITE_ID = 1. You can then configure the domain name and other details in the Django admin under the "Sites" app.
+
+Once these steps are complete, Django will generate a dynamic sitemap.xml file at the specified URL (/sitemap.xml in this example) that lists all your book review pages, which search engines like Google can crawl.
