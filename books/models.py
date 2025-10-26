@@ -80,3 +80,7 @@ class Review(models.Model):
     )
     review = models.CharField(max_length=255)
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+
+    def __str__(self):
+        preview = (self.review[:50] + "...") if len(self.review) > 50 else self.review
+        return f"{self.book.title}: {preview}"

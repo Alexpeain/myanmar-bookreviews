@@ -17,3 +17,4 @@ requests
 beautifulsoup4
 Unidecode
 # python-slugify
+django-cors-headers
