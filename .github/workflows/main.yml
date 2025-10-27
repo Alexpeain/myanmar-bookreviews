@@ -27,7 +27,7 @@ jobs:
 
     env:
       # DB used by Django test settings; adjust if your settings use different env var names
-      DATABASE_URL: postgres://postgres:postgres@127.0.0.1:5432/bookreviews_test
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/bookreviews_test
       SECRET_KEY: test-secret-key
       DEBUG: 'False'
 
