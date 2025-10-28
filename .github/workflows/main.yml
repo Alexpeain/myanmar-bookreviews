@@ -30,3 +30,11 @@ jobs:
     env:
       # FIX 1: The host must be the service name 'postgres', not 127.0.0.1
       DATABASE_URL: postgres://root:postgres@postgres:5432/myanmar_bookreviews_test
+    steps:
+      # ...
+      - name: Wait for Postgres to be ready
+        run: |
+          # This is the last missing piece:
+          for i in {1..20}; do pg_isready -h postgres -p 5432 -U root && break || sleep 1; done
+      - name: Run migrations
+        run: python manage.py migrate --noinput
