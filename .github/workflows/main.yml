@@ -18,7 +18,7 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           # Database name for testing
-          POSTGRES_DB: bookreviews_test
+          POSTGRES_DB: myanmar_bookreviewss
         ports:
           - 5432:5432
         options: >-
