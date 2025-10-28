@@ -12,29 +12,29 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        # Use a recent, stable PostgreSQL image
         image: postgres:15
         env:
+          # Initializes the database with 'root' user (matches your settings)
           POSTGRES_USER: root
           POSTGRES_PASSWORD: postgres
-          # Database name for testing
           POSTGRES_DB: myanmar_bookreviews_test
         ports:
           - 5432:5432
         options: >-
-          --health-cmd "pg_isready -U postgres -d myanmar_bookreviews_test"
+          # CRITICAL FIX: The health check user must be 'root' to match POSTGRES_USER.
+          --health-cmd "pg_isready -U root -d myanmar_bookreviews_test"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
 
     env:
-      # FIX 1: The host must be the service name 'postgres', not 127.0.0.1
+      # FIX 1: The host is the service name 'postgres'
       DATABASE_URL: postgres://root:postgres@postgres:5432/myanmar_bookreviews_test
       SECRET_KEY: test-secret-key
       DEBUG: 'False'
 
     steps:
-      - name: Checkout
+      - name: Checkout Code
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -42,7 +42,7 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Cache pip
+      - name: Cache pip dependencies
         uses: actions/cache@v4
         with:
           path: ~/.cache/pip
@@ -50,15 +50,17 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
 
-      - name: Install dependencies
+      - name: Install dependencies (including dj-database-url)
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          # IMPORTANT: Your Django settings.py must use a package like dj-database-url 
+          # to read the DATABASE_URL environment variable.
 
-      - name: Wait for Postgres
+      - name: Wait for Postgres to be ready
         run: |
-          # FIX 2: The pg_isready host must be the service name 'postgres'
-          for i in {1..20}; do pg_isready -h postgres -p 5432 && break || sleep 1; done
+          # FIX 2: Check for readiness using the service name 'postgres'
+          for i in {1..20}; do pg_isready -h postgres -p 5432 -U root && break || sleep 1; done
 
       - name: Run migrations
         run: |
@@ -69,13 +71,13 @@ jobs:
           python manage.py test --verbosity=2
 
   # ----------------------------------------------------------------------
-  # Continuous Delivery (CD) Job
+  # Continuous Delivery (CD) Job: Build and Push Docker Image
   # ----------------------------------------------------------------------
 
   build-and-publish:
     name: Build and publish Docker image
     runs-on: ubuntu-latest
-    # This job only runs if the 'test' job succeeded! (Quality Gate)
+    # Quality Gate: Only runs if the 'test' job succeeded
     needs: test
     if: github.ref == 'refs/heads/main'
     permissions:
@@ -84,11 +86,11 @@ jobs:
       id-token: write
 
     steps:
-      - name: Checkout
+      - name: Checkout Code
         uses: actions/checkout@v4
 
       - name: Log in to GitHub Container Registry
-        # Logs into ghcr.io using the default GITHUB_TOKEN secret
+        # Use GITHUB_TOKEN to authenticate with ghcr.io
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
@@ -96,7 +98,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push image
-        # Builds the image using your Dockerfile and tags it as 'latest'
+        # Builds the image using your Dockerfile and tags it
         uses: docker/build-push-action@v4
         with:
           context: .
@@ -104,4 +106,20 @@ jobs:
           tags: ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:latest
           file: ./Dockerfile
 
- 
+  # ----------------------------------------------------------------------
+  # Continuous Deployment (CD) Job: Deploy to EC2
+  # ----------------------------------------------------------------------
+
+  deploy:
+    name: Deploy to EC2
+    runs-on: ubuntu-latest
+    # Only runs if the 'build-and-publish' job succeeded
+    needs: build-and-publish
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Deployment Placeholder
+        run: echo "Deployment process starts here. You would use SSH or AWS CLI actions to connect to your EC2 instance, pull the new Docker image, and restart the container."
+        # **To make this deployment work, you will need to add:**
+        # 1. AWS credentials as Secrets in your GitHub repo settings.
+        # 2. A proper SSH or AWS CodeDeploy action here to interact with your EC2 instance.
