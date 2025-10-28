@@ -88,7 +88,7 @@ jobs:
   build-and-publish:
     name: Build and publish Docker image
     runs-on: ubuntu-latest
-    needs: test # Quality Gate: requires 'test' job to pass
+    needs: test
     if: github.ref == 'refs/heads/main'
     permissions:
       contents: read
@@ -106,14 +106,22 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      # Define a lowercase tag variable
+      - name: Set lowercase repository variables
+        id: vars
+        run: |
+          # The | tr '[:upper:]' '[:lower:]' command converts text to lowercase
+          echo "owner_lc=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_OUTPUT
+          echo "repo_lc=${GITHUB_REPOSITORY,,}" >> $GITHUB_OUTPUT
+
       - name: Build and push image
         uses: docker/build-push-action@v4
         with:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:latest
-
+          # CRITICAL FIX: Use the lowercase variables defined above
+          tags: ghcr.io/${{ steps.vars.outputs.owner_lc }}/${{ steps.vars.outputs.repo_lc }}:latest
   deploy:
     name: Deploy (placeholder)
     runs-on: ubuntu-latest
