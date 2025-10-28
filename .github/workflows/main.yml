@@ -15,21 +15,21 @@ jobs:
         # Use a recent, stable PostgreSQL image
         image: postgres:15
         env:
-          POSTGRES_USER: postgres
+          POSTGRES_USER: root
           POSTGRES_PASSWORD: postgres
           # Database name for testing
           POSTGRES_DB: myanmar_bookreviews_test
         ports:
           - 5432:5432
         options: >-
-          --health-cmd "pg_isready -U postgres -d bookreviews_test"
+          --health-cmd "pg_isready -U postgres -d myanmar_bookreviews_test"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
 
     env:
       # FIX 1: The host must be the service name 'postgres', not 127.0.0.1
-      DATABASE_URL: postgres://postgres:postgres@postgres:5432/myanmar_bookreviews_test
+      DATABASE_URL: postgres://root:postgres@postgres:5432/myanmar_bookreviews_test
       SECRET_KEY: test-secret-key
       DEBUG: 'False'
 
