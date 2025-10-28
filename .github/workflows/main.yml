@@ -29,7 +29,7 @@ jobs:
 
     env:
       # FIX 1: The host must be the service name 'postgres', not 127.0.0.1
-      DATABASE_URL: postgres://postgres:postgres@postgres:5432/bookreviews_test
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/myanmar_bookreviews_test
       SECRET_KEY: test-secret-key
       DEBUG: 'False'
 
