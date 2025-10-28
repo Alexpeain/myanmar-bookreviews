@@ -136,20 +136,20 @@ WSGI_APPLICATION = "bookreviews.wsgi.application"
 #         'PORT': env.str('DB_PORT',),
 #     }
 # }
-# DATABASES = {
-#     "default": env.dj_db_url('DATABASE_URL',default = 'sqlite://db.sqlite3')
-# }
-#  Use DotEnv
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_USER_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'), # Should be 'postgres'
-        'PORT': os.environ.get('DB_PORT'), # Should be '5432'
-    }
+     "default": env.dj_db_url('DATABASE_URL',default = 'sqlite://db.sqlite3')
 }
+#  Use DotEnv
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': os.environ.get('DB_NAME'),
+#         'USER': os.environ.get('DB_USER'),
+#         'PASSWORD': os.environ.get('DB_USER_PASSWORD'),
+#         'HOST': os.environ.get('DB_HOST'), # Should be 'postgres'
+#         'PORT': os.environ.get('DB_PORT'), # Should be '5432'
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
