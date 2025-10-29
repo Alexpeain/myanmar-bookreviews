@@ -17,6 +17,7 @@ or
 recommand to check postgresql instance in docker 
 docker exec -it postgres_container1 psql -U root -d myanmar_bookreviews
 
+
 Step 1 
 
 to create superuser
@@ -24,6 +25,7 @@ docker-compose up and
 docker exec -it myanmar-bookreviews-web-1 python manage.py migrate
 docker exec -it myanmar-bookreviews-web-1 python manage.py createsuperuser
 
+how do i import books data to postgresql 
 Step 2
 Load data to docker postgresl in django
 docker exec -it myanmar-bookreviews-web-1 python manage.py load_books scrapedbook/scraped_books_data.json
