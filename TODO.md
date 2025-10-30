@@ -157,8 +157,8 @@
 
 ## 🧪 CI/CD Pipeline
 
-- [ ] GitHub Actions: run tests + lint (`flake8` or `ruff`)
-- [ ] Add build-and-deploy after Dockerfile is stable
+- [x] GitHub Actions: run tests
+- [x] Add build-and-deploy after Dockerfile is stable
 
 ---
 

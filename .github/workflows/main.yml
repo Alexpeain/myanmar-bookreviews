@@ -128,5 +128,43 @@ jobs:
     needs: build-and-publish # Quality Gate: requires 'build-and-publish' to pass
     if: github.ref == 'refs/heads/main'
     steps:
-      - name: Deployment placeholder
-        run: echo "Final step to SSH into server, pull the image, and restart the service."
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Set up SSH and Deploy
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          # SSH Credentials - Pulled from your GitHub Secrets
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          # The entire deployment sequence is executed on the remote server
+          script: |
+            echo "1. Fetching latest configuration from Git..."
+            # Navigate to the root directory where your docker-compose.yml lives
+            cd /path/to/your/project/root
+            
+            # Pull the latest docker-compose.yml and .env changes
+            git pull origin main 
+            
+            echo "2. Authenticating with Docker Hub/Registry..."
+            # Use GitHub secrets for Docker Registry Login
+            echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+            
+            echo "3. Pulling and Redeploying Containers (Zero Downtime)..."
+            # Pull new images and restart the services using the new image tag.
+            # --no-deps: only restart the web service
+            # --force-recreate: necessary to pick up the new image
+            # -d: run in detached mode
+            docker compose pull web 
+            docker compose up -d web
+            
+            echo "4. Running Database Migrations..."
+            # Executing migrations inside the running 'web' container
+            docker compose exec web python manage.py migrate --noinput
+            
+            echo "5. Cleanup old images..."
+            # Remove old, dangling images to save disk space
+            docker image prune -f
+            
+            echo "✅ Deployment Complete!"

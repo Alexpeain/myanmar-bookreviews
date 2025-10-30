@@ -6,7 +6,7 @@
 
 ### Purpose of the project
 
-- Learn By Building Focus on Backend Development
+- Learn By Building Focus on Backend S
 - For passion as an avid reader who does't have time and want to save time
 
 ### Set up the installations
@@ -17,25 +17,42 @@ set virtual environments
 python -m venv .myenv
 ```
 
+Activate the virtual environment
+
+```source .myenv/bin/activate
+
+```
+
+Install the requirements
+
+```pip install -r requirements.txt
+
+```
+
 ### Docker
 
 ```
-docker-compose up
+docker-compose up --build -d
 ```
 
-### Migrate the date
+### Migrate the database
 
-```docker-compose exec web python manage.py migrate
+```
+docker-compose exec web python manage.py migrate
 
 ```
 
 ### Createsuperuser
 
-docker-compose exec web python manage.py createsuperuser
+```docker-compose exec web python manage.py createsuperuser
+
+```
 
 ### Set the runserver
 
-`docker-compose exec web python manage.py runserver 0.0.0.0:8001`
+```docker-compose exec web python manage.py runserver 0.0.0.0:8001
+
+```
 
 #### Backend stacks and Configuration
 

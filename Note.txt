@@ -32,3 +32,6 @@ docker exec -it myanmar-bookreviews-web-1 python manage.py load_books scrapedboo
 # Load genres
 docker exec -it myanmar-bookreviews-web-1 python manage.py load_genres
 
+
+Turn Off Volume in docker-compose.yml for production level 
+so when you want to check local you have to uncomment in docker-compose.yml
