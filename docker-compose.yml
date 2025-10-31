@@ -4,7 +4,7 @@ services:
       context: . # Current directory for the build
       args:      # <--- CORRECT: 'args' is now nested under 'build'
         - SECRET_KEY=${SECRET_KEY}
-        - DEBUG=${DEBUG:-False}
+        - DEBUG=False
     command: gunicorn myanmar_bookreviews.wsgi:application --bind 0.0.0.0:8000 
     # ... rest of service
     # command: python manage.py runserver 0.0.0.0:8000 # Command to run the development server locally
