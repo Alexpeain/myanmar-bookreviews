@@ -1,8 +1,12 @@
 services:
-  # Service for your Django application
-  web: # <--- This is the service name for your Django app
-    build: . # <--- Build using the Dockerfile in the current directory
-    command: gunicorn myanmar_bookreviews.wsgi:application --bind 0.0.0.0:8000 # Command to run the Gunicorn server
+  web:
+    build: 
+      context: . # Current directory for the build
+      args:      # <--- CORRECT: 'args' is now nested under 'build'
+        - SECRET_KEY=${SECRET_KEY}
+        - DEBUG=${DEBUG}
+    command: gunicorn myanmar_bookreviews.wsgi:application --bind 0.0.0.0:8000 
+    # ... rest of service
     # command: python manage.py runserver 0.0.0.0:8000 # Command to run the development server locally
     # volumes:
     #   - .:/code # Mount your project code into the container for easy development updates

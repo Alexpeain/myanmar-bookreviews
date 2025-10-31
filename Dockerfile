@@ -6,12 +6,14 @@ ENV PIP_DISABLE_PIP_VERSION_CHECK=1
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 # Set work directory
+ARG SECRET_KEY
+ARG DEBUG
 WORKDIR /code
 # Install dependencies
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-#Run static files
-RUN python manage.py collectstatic --noinput
 # Copy project
 COPY . .
+#Run static files
+RUN SECRET_KEY=$SECRET_KEY DEBUG=$DEBUG python manage.py collectstatic --noinput
