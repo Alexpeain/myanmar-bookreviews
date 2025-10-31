@@ -1,38 +1,29 @@
 services:
   web:
-    build: 
-      context: . # Current directory for the build
-      args:      # <--- CORRECT: 'args' is now nested under 'build'
-        - SECRET_KEY=${SECRET_KEY}
-        - DEBUG=False
-    command: gunicorn myanmar_bookreviews.wsgi:application --bind 0.0.0.0:8000 
-    # ... rest of service
-    # command: python manage.py runserver 0.0.0.0:8000 # Command to run the development server locally
-    # volumes:
-    #   - .:/code # Mount your project code into the container for easy development updates
-    ports:
-      - "8000:8000" # Map host port 8000 to container port 8000
+    build:
+      context: .
+    command: gunicorn bookreviews.wsgi:application --bind 0.0.0.0:8000
     env_file:
-      - .env # Load environment variables from the .env file
-    depends_on:
-      - postgres # Ensure the database service starts before the web service
-
-  # Service for your PostgreSQL database
-  postgres: # <--- This is the service name for your database
-    image: postgres:15-alpine # Use the official PostgreSQL image
-    container_name: postgres_container1 # Optional: give the container a fixed name
-    restart: always # Restart if the container stops
-    environment: # Set environment variables for PostgreSQL initialization
-      POSTGRES_DB: ${DB_NAME} # Get DB_NAME from .env
-      POSTGRES_USER: ${DB_USER} # Get DB_USER from .env
-      POSTGRES_PASSWORD: ${DB_USER_PASSWORD} # Get DB_USER_PASSWORD from .env
-      LC_ALL: C.UTF-8 # Best practice for Unicode
-      LC_COLLATE: C.UTF-8 # Sets collation for case-insensitive sorting
-      LC_CTYPE: C.UTF-8 # Sets character classification for matchin
+      - .env
     ports:
-      - "5432:5432" # Map host port 5432 to container port 5432 (optional, useful for connecting with external tools like pgAdmin)
+      - "8000:8000"
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_USER_PASSWORD}
+      LC_ALL: C.UTF-8
+      LC_COLLATE: C.UTF-8
+      LC_CTYPE: C.UTF-8
+    ports:
+      - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data # Persist database data
+      - postgres_data:/var/lib/postgresql/data
 
 volumes:
-  postgres_data: # Define the named volume for data persistence
+  postgres_data:
