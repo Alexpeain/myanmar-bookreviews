@@ -1,4 +1,4 @@
-# MyanBookReviews
+# Myanmar BookReviews
 
 > A backend-focused book review platform for avid readers in Myanmar. This project was built to learn and demonstrate core backend development skills, including API design, database management, and CI/CD.
 
