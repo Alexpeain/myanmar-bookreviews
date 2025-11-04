@@ -137,7 +137,7 @@ jobs:
           # SSH Credentials - Pulled from your GitHub Secrets
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          key: ${{ secrets.AWS_PRIVATE_KEY }}
           # The entire deployment sequence is executed on the remote server
           script: |
             echo "1. Fetching latest configuration from Git..."
